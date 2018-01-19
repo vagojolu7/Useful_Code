@@ -1,0 +1,68 @@
+// Example program
+#include <iostream>
+#include <string>
+using namespace std;
+
+// This classes should be on a separate .h file
+
+int counter = 0;
+ 
+
+class node{
+    int Data;
+    node* Next;
+    friend class list;
+};
+
+
+class list{
+    private:
+        node* head;
+        node* temp;
+    public:
+        list();
+        void addNode(const int& n);
+        void deleteNode();
+        void checkMe();
+        void printList(node* head);
+};
+//
+list::list(){
+    head = NULL;
+    temp = NULL;
+}
+
+void list::addNode(const int &n){
+    node* dizElem = new node;
+    dizElem -> Data = n;
+    dizElem -> Next = head;
+    head = dizElem; 
+    counter++;
+}
+
+void list::deleteNode(){
+    node* old = head;
+    head = old -> Next;
+    delete old;
+    counter--;
+}
+
+void list::printList(node* head){
+    if (head == NULL){
+        cout << "No content on list" <<endl;
+        } else{
+            node* tmp = head;
+            while(tmp->Next != NULL) {
+                tmp = tmp->Next;
+                cout << tmp->Data << endl;
+            }
+        }   
+}
+
+int main(){
+    list n;
+
+    n.addNode(5);
+    n.addNode(4);
+    n.printList(4)
+}
