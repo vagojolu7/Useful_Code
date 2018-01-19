@@ -1,4 +1,3 @@
-// Example program
 #include <iostream>
 #include <string>
 using namespace std;
@@ -24,7 +23,7 @@ class list{
         void addNode(const int& n);
         void deleteNode();
         void checkMe();
-        void printList(node* head);
+        void printList();
 };
 //
 list::list(){
@@ -47,6 +46,7 @@ void list::deleteNode(){
     counter--;
 }
 
+/*
 void list::printList(node* head){
     if (head == NULL){
         cout << "No content on list" <<endl;
@@ -58,11 +58,19 @@ void list::printList(node* head){
             }
         }   
 }
+*/
 
+void list::printList(){
+    temp=head;
+    while(temp != NULL){
+        cout << temp->Data << endl;
+        temp = temp->Next;
+    }
+}
 int main(){
     list n;
 
     n.addNode(5);
     n.addNode(4);
-    n.printList(4)
+    n.printList();
 }
